@@ -1,0 +1,5 @@
+---
+- name: Attach worker node cleanly to the active master cluster
+  command: "{{ hostvars['master_node']['k8s_join_command'] }}"
+  args:
+    creates: /etc/kubernetes/kubelet.conf
