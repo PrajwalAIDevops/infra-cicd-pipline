@@ -6,11 +6,14 @@ terraform {
     }
   }
 
+ 
   backend "s3" {
-    bucket         = "stg-infra-bucket-prajwa10l"
-    key            = "state/terraform.tfstate"
+    bucket         = "stg-infra-bucket-prajwa10l" # Replace with your exact S3 state bucket
+    key            = "stage/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "stg-dynamodb"
-    encrypt        = true
+    
+    # FIX: Remove dynamodb_table line completely and replace it with this:
+    use_lockfile   = true
   }
+
 }
